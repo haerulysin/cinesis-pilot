@@ -1,4 +1,5 @@
 # Cinesis Load Matcher
+**Live Demo**: https://hawkeye.mdrul.dev/
 **Stack:** Python, FastAPI, OpenAI, plain HTML/CSS/JS
 
 ## Part A — Extraction
