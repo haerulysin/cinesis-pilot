@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cinesis Load Matcher</title>
+    <link rel="icon" href="data:," />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+    <script src="/static/script.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section id="screen-1" class="screen is-active">
+        <div class="card card-main">
+          <div class="card-head">
+            <div>
+              <p class="eyebrow">Screen 1</p>
+              <h2>Transcript Input</h2>
+            </div>
+            <div class="head-actions">
+              <div id="load-status" class="pill pill-muted">Loading loads...</div>
+              <button
+                id="analyze-btn"
+                class="btn-primary"
+                data-action="analyze"
+              >
+                Analyze Transcript
+              </button>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field-label" for="transcript"
+              >Driver transcript</label
+            >
+            <textarea id="transcript" spellcheck="false"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-2" class="screen is-active">
+        <div class="card card-main">
+          <div class="card-head">
+            <div>
+              <p class="eyebrow">Screen 2</p>
+              <h2>Processing Pipeline</h2>
+            </div>
+            <button id="run-again-btn" class="btn-secondary" data-action="analyze">
+              Analyze Transcript
+            </button>
+          </div>
+          <div id="analysis-error" class="error-banner hidden"></div>
+          <div id="processing-empty" class="empty-state">
+            <span>No transcript run yet.</span>
+            <button class="btn-primary" data-action="analyze">
+              Analyze Transcript
+            </button>
+          </div>
+          <div class="pipeline">
+            <div class="pipeline-state">
+              <span class="pipeline-dot active"></span>
+              <span class="pipeline-label">Extract</span>
+              <span class="pipeline-dot"></span>
+              <span class="pipeline-label">Rank</span>
+              <span class="pipeline-dot"></span>
+              <span class="pipeline-label">Review</span>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <section class="card-section">
+              <div class="section-head">
+                <h3>Driver Profile</h3>
+                <span class="pill pill-purple">Active</span>
+              </div>
+              <div id="profile-empty" class="empty-line">
+                Waiting for extracted profile.
+              </div>
+              <div id="profile-fields" class="profile-fields"></div>
+            </section>
+          </div>
+          <div class="card-footer">
+            <button id="view-results-btn" class="btn-secondary hidden" type="button">
+              View Load Evaluation
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="screen-3" class="screen is-active">
+        <div class="card card-main">
+          <div class="card-head">
+            <div>
+              <p class="eyebrow">Screen 3</p>
+              <h2>Load Evaluation and Ranked Results</h2>
+            </div>
+            <div class="head-actions">
+              <button id="rank-analyze-btn" class="btn-primary" data-action="analyze">
+                Analyze Transcript
+              </button>
+              <button id="new-transcript-btn" class="btn-secondary">
+                Edit Transcript
+              </button>
+            </div>
+          </div>
+          <div class="results-grid">
+            <section class="card-section">
+              <div class="section-head">
+                <h3>Load Evaluation</h3>
+                <span class="pill pill-muted">Eligible and rejected</span>
+              </div>
+              <div id="loads-empty" class="empty-line">
+                Waiting for load ranking.
+              </div>
+              <div id="load-rows" class="load-rows"></div>
+            </section>
+
+            <section class="card-section">
+              <div class="section-head">
+                <h3>Ranked Results</h3>
+                <span class="pill pill-purple">Top 3</span>
+              </div>
+              <div id="rank-empty" class="empty-state">
+                <span>No ranked loads yet.</span>
+                <button class="btn-primary" data-action="analyze">
+                  Analyze Transcript
+                </button>
+              </div>
+              <div id="rank-cards" class="rank-cards"></div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
